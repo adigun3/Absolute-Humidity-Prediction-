@@ -25,6 +25,9 @@ Data Wrangling
 --------------
 After importing the dataset into google colab, the next step is to transform it into the right format by encoding the dataset into categorical data using the OneHotEncoder library and then converting the independent variable X into a data array format. Later on, the data was splited into the Training set and Test set.
 
+
+## Encoding categorical data
+
 from sklearn.compose import ColumnTransformer
 
 from sklearn.preprocessing import OneHotEncoder
@@ -32,6 +35,17 @@ from sklearn.preprocessing import OneHotEncoder
 ct = ColumnTransformer(transformers=[('encoder', OneHotEncoder(), [3])], remainder='passthrough')
 
 X = np.array(ct.fit_transform(X))
+
+## Splitting the dataset into the Training set and Test set
+
+from sklearn.model_selection import train_test_split
+
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size = 0.2, random_state = 0)
+
+
+
+
+
 
 
 
