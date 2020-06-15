@@ -13,3 +13,6 @@ The dataset is named AirQualityUCI.csv
 
 Import data to project:
 
+dataset = pd.read_csv('AirQualityUCI.csv')
+X = dataset.iloc[:, :-1].values
+y = dataset.iloc[:, -1].values
