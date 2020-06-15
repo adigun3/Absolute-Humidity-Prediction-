@@ -18,3 +18,17 @@ dataset = pd.read_csv('AirQualityUCI.csv')
 X = dataset.iloc[:, :-1].values
 
 y = dataset.iloc[:, -1].values
+
+This dataset is split into independent variables "X", containing all the varibles in the dataset with the exception of the predicted absolute humidity which is the dependent varriable "y".
+
+Data Wrangling
+--------------
+After importing the dataset into google colab, the next step is to transform it into the right format by encoding the dataset into categorical data using the OneHotEncoder library and then converting the independent variable X into a data array format. Later on, the data was splited into the Training set and Test set.
+
+from sklearn.compose import ColumnTransformer
+from sklearn.preprocessing import OneHotEncoder
+ct = ColumnTransformer(transformers=[('encoder', OneHotEncoder(), [3])], remainder='passthrough')
+X = np.array(ct.fit_transform(X))
+
+
+
