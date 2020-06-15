@@ -23,7 +23,7 @@ This dataset is split into independent variables "X", containing all the varible
 
 Data Wrangling
 --------------
-After importing the dataset into google colab, the next step is to transform it into the right format by encoding the dataset into categorical data using the OneHotEncoder library and then converting the independent variable X into a data array format. Later on, the data was splited into the Training set and Test set.
+After importing the dataset into google colab, the next step is to transform it into the right format by encoding the dataset into categorical data using the OneHotEncoder library and then converting the independent variable X into a data array format. Later on, the data was splited into the Training set (X_train, y_train) and Test set (X_test and y_test).
 
 
 ## Encoding categorical data
@@ -43,9 +43,17 @@ from sklearn.model_selection import train_test_split
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size = 0.2, random_state = 0)
 
 
+Training the Dataset
+--------------
+After the dataset has been separated into the Traing and Test set, I decided to use the Multple Linear Regression Model on the Training set to train the dataset. I used the LinearRegression library from sklearn.Linear_model to create a regressor which I applied as "fit" on the X_train and y_train (independent variables).
 
+Training the Multiple Linear Regression model on the Training set
 
+from sklearn.linear_model import LinearRegression
 
+regressor = LinearRegression()
+
+regressor.fit(X_train, y_train)
 
 
 
