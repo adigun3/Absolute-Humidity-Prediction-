@@ -61,7 +61,7 @@ Making the prediction of Absolute Humidity
 After creating the regressor, the regressor was applied as a predict on the X_test to compute a y_pred which is the predicted "y" values. The y_pred represent the predicted dependent variable from the independent test dataset (X_test) and this prediction was compared to y_test, the dependent test variables.
 
 
-## Predicting the Test set results 
+## Predicting the Test set results from Multiple Linear Regression 
 
 y_pred = regressor.predict(X_test)
 
@@ -135,7 +135,7 @@ ann.compile(optimizer = 'adam', loss = 'mean_squared_error')
 
 ann.fit(X_train, y_train, batch_size = 32, epochs = 100)
 
-## Predicting the results of the Test set¶ 
+## Predicting the results of the Test set from ANN Model 
 
 y_pred = ann.predict(X_test)
 
@@ -158,5 +158,5 @@ print(np.concatenate((y_pred.reshape(len(y_pred),1), y_test.reshape(len(y_test),
 
 Conclusions
 --------------
-
+In conclusion, the predictive results of Absolute Humidity from both the Multiple Linear Regression Model and the Artificial Neural Network show a great comparative result with the observed Absolute Humidity from the field. It is however observed that the predictive Absolute Humidity from the ANN model exhibit better accuray when comapred to the result from the Multiple linear Rgression model. 
 
