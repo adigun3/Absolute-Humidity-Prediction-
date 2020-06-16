@@ -55,5 +55,26 @@ regressor = LinearRegression()
 
 regressor.fit(X_train, y_train)
 
+Making the prediction of Absolute Humidity
+--------------
+
+After creating the regressor, the regressor was applied as a predict on the X_test to compute a y_pred which is the predicted "y" values. The y_pred represent the predicted dependent variable from the independent test dataset (X_test) and this prediction was compared to y_test, the dependent test variables.
+
+
+Predicting the Test set results 
+
+y_pred = regressor.predict(X_test)
+
+np.set_printoptions(precision=2)
+
+print(np.concatenate((y_pred.reshape(len(y_pred),1), y_test.reshape(len(y_test),1)),1))
+
+[[ 4.52e-01  6.82e-01]
+ [ 2.76e+00  4.13e-01]
+ [ 2.20e+00  1.16e+00]
+ ...
+ [-1.99e+02 -2.00e+02]
+ [-1.09e-02  1.00e+00]
+ [ 1.59e+00  1.16e+00]]
 
 
