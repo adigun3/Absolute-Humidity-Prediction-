@@ -11,7 +11,7 @@ Getting Data
 To start with, the dataset used in the workflow (Air Quality Data Set) was accessed and downloaded from UCI Machine Learning Resiporatory. It contain 9358 instances of hourly average responses from a device located on a field in a highly polluted area in Italy. The dataset consist of fouteen attributes ranging from True hourly averaged concentration CO, True hourly averaged Benzene concentration, Temperature, Relative Humidity, Absolute Humidity anong others.
 The dataset is named AirQualityUCI.csv
 
-Import data to project:
+## Import data to project:
 
 dataset = pd.read_csv('AirQualityUCI.csv')
 
@@ -47,7 +47,7 @@ Training the Dataset
 --------------
 After the dataset has been separated into the Traing and Test set, I decided to use the Multple Linear Regression Model on the Training set to train the dataset. I used the LinearRegression library from sklearn.Linear_model to create a regressor which I applied as "fit" on the X_train and y_train (independent variables).
 
-Training the Multiple Linear Regression model on the Training set
+## Training the Multiple Linear Regression model on the Training set
 
 from sklearn.linear_model import LinearRegression
 
@@ -61,7 +61,7 @@ Making the prediction of Absolute Humidity
 After creating the regressor, the regressor was applied as a predict on the X_test to compute a y_pred which is the predicted "y" values. The y_pred represent the predicted dependent variable from the independent test dataset (X_test) and this prediction was compared to y_test, the dependent test variables.
 
 
-Predicting the Test set results 
+## Predicting the Test set results 
 
 y_pred = regressor.predict(X_test)
 
@@ -88,7 +88,7 @@ Applying Artificial Neural Network (ANN) Model
 The same AirQuality dataset was processed with Artificial Neural Network model. The tensorflow library was imported since ANN requires keras model which is from tensorflow library. The dataset format for ANN is ".xlsx".
 The workflow below was used to arrive and make the predictions of the Absolute Humidity.
 
-Importing the libraries
+## Importing the libraries
 
 import numpy as np
 
@@ -96,13 +96,64 @@ import pandas as pd
 
 import tensorflow as tf
 
-Importing the dataset
+## Importing the dataset
 
 dataset = pd.read_excel('AirQualityUCI_data.xlsx')
 
 X = dataset.iloc[:, :-1].values
 
 y = dataset.iloc[:, -1].values
+
+## Splitting the dataset into the Training set and Test set¶ 
+
+from sklearn.model_selection import train_test_split
+
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size = 0.2, random_state = 0)
+
+
+## Initializing the ANN 
+
+ann = tf.keras.models.Sequential()
+
+## Adding the input layer and the first hidden layer
+
+ann.add(tf.keras.layers.Dense(units=6, activation='relu'))
+
+## Adding the second hidden layer
+
+ann.add(tf.keras.layers.Dense(units=6, activation='relu'))
+
+## Adding the output layer
+
+ann.add(tf.keras.layers.Dense(units=1))
+
+## Compiling the ANN 
+
+ann.compile(optimizer = 'adam', loss = 'mean_squared_error')
+
+## Training the ANN model on the Training set
+
+ann.fit(X_train, y_train, batch_size = 32, epochs = 100)
+
+## Predicting the results of the Test set¶ 
+
+y_pred = ann.predict(X_test)
+
+np.set_printoptions(precision=2)
+
+print(np.concatenate((y_pred.reshape(len(y_pred),1), y_test.reshape(len(y_test),1)),1))
+
+[[   1.03    0.68]
+
+ [   1.03    0.41]
+ 
+ [   1.03    1.16]
+
+ [-199.96 -200.  ]
+ 
+ [   1.03    1.  ]
+ 
+ [   1.03    1.16]]
 
 
 Conclusions
