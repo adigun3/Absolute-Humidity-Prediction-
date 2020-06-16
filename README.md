@@ -70,11 +70,15 @@ np.set_printoptions(precision=2)
 print(np.concatenate((y_pred.reshape(len(y_pred),1), y_test.reshape(len(y_test),1)),1))
 
 [[ 4.52e-01  6.82e-01]
+
  [ 2.76e+00  4.13e-01]
+ 
  [ 2.20e+00  1.16e+00]
- ...
+ 
  [-1.99e+02 -2.00e+02]
+ 
  [-1.09e-02  1.00e+00]
+ 
  [ 1.59e+00  1.16e+00]]
 
 
