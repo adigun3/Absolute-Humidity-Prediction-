@@ -80,5 +80,32 @@ print(np.concatenate((y_pred.reshape(len(y_pred),1), y_test.reshape(len(y_test),
  [-1.09e-02  1.00e+00]
  
  [ 1.59e+00  1.16e+00]]
+ 
+
+
+Applying Artificial Neural Network (ANN) Model
+--------------
+The same AirQuality dataset was processed with Artificial Neural Network model. The tensorflow library was imported since ANN requires keras model which is from tensorflow library. The dataset format for ANN is ".xlsx".
+The workflow below was used to arrive and make the predictions of the Absolute Humidity.
+
+Importing the libraries
+
+import numpy as np
+
+import pandas as pd
+
+import tensorflow as tf
+
+Importing the dataset
+
+dataset = pd.read_excel('AirQualityUCI_data.xlsx')
+
+X = dataset.iloc[:, :-1].values
+
+y = dataset.iloc[:, -1].values
+
+
+Conclusions
+--------------
 
 
