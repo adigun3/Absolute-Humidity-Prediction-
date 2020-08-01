@@ -85,7 +85,7 @@ The result from LinearRegression Model of the predicted y (y_pred) values from t
 
 Applying Artificial Neural Network (ANN) Model to the AirQuality Data to predict Absolute Humidity
 --------------
-The same AirQuality dataset in the prvious exercise was processed with Artificial Neural Network model. The tensorflow library was imported since ANN requires keras model which is from tensorflow library. The dataset format for ANN is "AirQualityUCI.xlsx".
+The same AirQuality dataset in the previous exercise was processed with Artificial Neural Network model. The tensorflow library was imported since ANN requires keras model which is from tensorflow library. The dataset format for ANN is "AirQualityUCI.xlsx".
 The workflow below was used to arrive and make the predictions of the Absolute Humidity.
 
 ## Importing the libraries
